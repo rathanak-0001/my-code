@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surprise 💖🌸</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    h1 {
+      font-size: 2.5em;
+      color: #e91e63;
+      text-shadow: 0 0 10px rgba(233,30,99,0.6);
+    }
+    .heart {
+      width: 100px;
+      height: 90px;
+      background: #e91e63;
+      position: relative;
+      transform: rotate(-45deg);
+      animation: pulse 1s infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 100px;
+      height: 90px;
+      background: #e91e63;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart::before { top: -50px; left: 0; }
+    .heart::after { left: 50px; top: 0; }
+
+    @keyframes pulse {
+      0% { transform: scale(1) rotate(-45deg); }
+      50% { transform: scale(1.2) rotate(-45deg); }
+      100% { transform: scale(1) rotate(-45deg); }
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes float {
+      from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      to   { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>For You 💖🌸</h1>
+  <div class="heart"></div>
+
+  <script>
+    const flowers = ["🌸","🌹","🌺","🌼","💐"];
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.className = "flower";
+      flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 8000);
+    }
+    setInterval(createFlower, 600);
+  </script>
+</body>
+</html>
